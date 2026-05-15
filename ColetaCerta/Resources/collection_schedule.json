@@ -1,0 +1,33 @@
+[
+  {
+    "bairro": "Morro Grande",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["SEG", "QUA", "SEX"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["SAB"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["TER", "QUI", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["SAB"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      }
+    }
+  }
+]

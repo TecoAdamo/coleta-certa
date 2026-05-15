@@ -17,12 +17,25 @@ final class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigateToOnboarding()
 
         setupUI()
     }
 
-
     private func setupUI() {
         view.backgroundColor = Colors.backgroundPrimary
+    }
+    
+    private func navigateToOnboarding(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            let onboardingViewController = OnboardingViewController()
+            
+            self.navigationController?.pushViewController(
+                onboardingViewController,
+                animated: true
+            )
+        }
     }
 }
