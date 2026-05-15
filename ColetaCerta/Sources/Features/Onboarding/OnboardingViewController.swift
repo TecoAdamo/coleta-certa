@@ -22,9 +22,21 @@ final class OnboardingViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
         setupUI()
+        setupActions()
     }
     
     private func setupUI(){
         view.backgroundColor = Colors.backgroundCardWhite
+    }
+    
+    private func setupActions(){
+        onboardingView.secondaryButton.addTarget(self, action: #selector(goToManualAddress), for: .touchUpInside)
+    }
+    
+    @objc
+    private func goToManualAddress(){
+        let vc = AddressViewController()
+
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
