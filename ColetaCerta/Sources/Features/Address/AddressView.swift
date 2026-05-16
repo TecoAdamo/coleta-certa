@@ -31,43 +31,43 @@ final class AddressView: UIView {
     }()
     
     let cepInput = CustomInput(
-        placeholder: "ex: 00000-000",
+        title: "CEP", placeholder: "ex: 00000-000",
         type: .cep,
         style: .secondary
     )
     
     let streetInput = CustomInput(
-        placeholder: "ex: Rua Olaria",
+        title: "Rua", placeholder: "ex: Rua Olaria",
         type: .normal,
         style: .secondary
     )
     
     let numericInput = CustomInput(
-        placeholder: "Nº",
+        title: "Número", placeholder: "Nº",
         type: .numeric,
         style: .secondary
     )
     
     let complementInput = CustomInput(
-        placeholder: "Complemento",
+        title: "Complemento(opcional)", placeholder: "Complemento",
         type: .normal,
         style: .secondary
     )
     
     let neighborhoodInput = CustomInput(
-        placeholder: "ex: Água Branca",
+        title: "Bairro", placeholder: "ex: Água Branca",
         type: .normal,
         style: .secondary
     )
     
     let cityInput = CustomInput(
-        placeholder: "Cidade",
+        title: "Cidade", placeholder: "Cidade",
         type: .normal,
         style: .secondary
     )
     
     let ufInput = CustomInput(
-        placeholder: "UF",
+        title: "UF", placeholder: "UF",
         type: .uf,
         style: .secondary
     )
