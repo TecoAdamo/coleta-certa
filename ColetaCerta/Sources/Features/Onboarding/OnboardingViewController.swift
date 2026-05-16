@@ -30,7 +30,7 @@ final class OnboardingViewController: UIViewController {
     }
     
     private func setupActions(){
-        onboardingView.secondaryButton.addTarget(self, action: #selector(goToManualAddress), for: .touchUpInside)
+        onboardingView.primaryButton.addTarget(self, action: #selector(goToManualAddress), for: .touchUpInside)
     }
     
     @objc

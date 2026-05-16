@@ -37,14 +37,8 @@ final class OnboardingView: UIView {
     }()
     
     let primaryButton = CustomButton(
-        title: "Usar minha localização",
+        title: "Informar meu endereço",
         style: .primary,
-        size: .large
-    )
-    
-    let secondaryButton = CustomButton(
-        title: "Informar endereço manualmente",
-        style: .secondary,
         size: .large
     )
     
@@ -64,7 +58,6 @@ final class OnboardingView: UIView {
         addSubview(textLabel)
         addSubview(imgOnboarding)
         addSubview(primaryButton)
-        addSubview(secondaryButton)
         
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -85,10 +78,6 @@ final class OnboardingView: UIView {
             primaryButton.widthAnchor.constraint(equalToConstant: 300),
             primaryButton.heightAnchor.constraint(equalToConstant: 50),
             
-            secondaryButton.topAnchor.constraint(equalTo: primaryButton.bottomAnchor, constant: 20),
-            secondaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            secondaryButton.widthAnchor.constraint(equalToConstant: 300),
-            secondaryButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
