@@ -4,6 +4,7 @@ Aplicativo iOS desenvolvido com UIKit + ViewCode para ajudar usuários a consult
 <img width="290" height="700" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 48" src="https://github.com/user-attachments/assets/3e7c1b36-d5bc-4500-bb5b-d564919b8564" />
 <img width="290" height="700" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 41" src="https://github.com/user-attachments/assets/58646eff-2382-42be-ae3c-c2346d99d7ff" />
 <img width="290" height="700" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 21" src="https://github.com/user-attachments/assets/af5b220f-dfb6-4e95-9d57-a16b9ea14578" />
+<img width="290" height="700" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-17 at 01 35 51" src="https://github.com/user-attachments/assets/264c9944-4de5-45b4-a1ce-0eb9511ce417" />
 
 
 # 📱 Sobre o projeto
