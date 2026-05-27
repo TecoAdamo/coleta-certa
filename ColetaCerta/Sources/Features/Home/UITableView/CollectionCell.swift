@@ -51,15 +51,7 @@ final class CollectionCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-    private let arrowImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
-        imageView.tintColor = .lightGray
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-
+ 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -92,7 +84,6 @@ final class CollectionCell: UITableViewCell {
         contentView.addSubview(typeIconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(timeLabel)
-        contentView.addSubview(arrowImageView)
         
         NSLayoutConstraint.activate([
             weekDayLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
@@ -109,13 +100,10 @@ final class CollectionCell: UITableViewCell {
             
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: typeIconImageView.trailingAnchor, constant: 15),
+
             
-            arrowImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            arrowImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            arrowImageView.widthAnchor.constraint(equalToConstant: 12),
-            arrowImageView.heightAnchor.constraint(equalToConstant: 18),
-            
-            timeLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            timeLabel.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -12)        ])
+            timeLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            timeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor, constant: 150)
+        ])
     }
 }

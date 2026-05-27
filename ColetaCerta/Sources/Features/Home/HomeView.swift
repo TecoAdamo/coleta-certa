@@ -129,17 +129,36 @@ final class HomeView: UIView {
         
         addSubview(calendarLabel)
         addSubview(tableView)
+        
+        tableView.rowHeight = 60
+        tableView.estimatedRowHeight = 60
+        
+        let headerSpacer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 12))
+        headerSpacer.backgroundColor = .clear
+        tableView.tableHeaderView = headerSpacer
+        let footerSpacer = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 12))
+        footerSpacer.backgroundColor = .clear
+        tableView.tableFooterView = footerSpacer
+        
         addSubview(containerMessage)
         
         containerMessage.addSubview(lightIcon)
         containerMessage.addSubview(labelContainerMessage)
         containerMessage.addSubview(subLabelContainerMessage)
         
+        let footerView = UIView()
+        footerView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 180)
+
+        footerView.addSubview(containerMessage)
+        tableView.tableFooterView = footerView
+        
+        tableView.showsVerticalScrollIndicator = false
+        
         NSLayoutConstraint.activate([
 
             container.topAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.topAnchor,
-                constant: 32
+                constant: 22
             ),
             container.leadingAnchor.constraint(
                 equalTo: leadingAnchor,
@@ -166,7 +185,6 @@ final class HomeView: UIView {
                 equalTo: container.leadingAnchor,
                 constant: 20
             ),
-        
             
             organicIcon.leadingAnchor.constraint(
                 equalTo: container.leadingAnchor,
@@ -215,22 +233,10 @@ final class HomeView: UIView {
             tableView.bottomAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.bottomAnchor
             ),
-            
-            containerMessage.bottomAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.bottomAnchor,
-                constant: -40
-            ),
 
-            containerMessage.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 24
-            ),
-
-            containerMessage.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -24
-            ),
-
+            containerMessage.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 20),
+            containerMessage.leadingAnchor.constraint(equalTo: footerView.leadingAnchor),
+            containerMessage.trailingAnchor.constraint(equalTo: footerView.trailingAnchor),
             containerMessage.heightAnchor.constraint(equalToConstant: 140),
             
             lightIcon.topAnchor.constraint(equalTo: containerMessage.topAnchor, constant: 34),

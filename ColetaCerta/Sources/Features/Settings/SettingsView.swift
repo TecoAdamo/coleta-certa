@@ -8,7 +8,15 @@
 import Foundation
 import UIKit
 
+protocol SettingsViewDelegate: AnyObject {
+    func settingsView(_ view: SettingsView, didChangeNotificationSwitch isOn: Bool)
+    func settingsView(_ view: SettingsView, didSelectAntecedenceMinutes minutes: Int)
+}
+
 final class SettingsView: UIView {
+    weak var delegate: SettingsViewDelegate?
+    
+    
     let textLabel: UILabel = {
         let label = UILabel()
         label.text = "Ajustes"
@@ -225,13 +233,19 @@ final class SettingsView: UIView {
         
         if #available(iOS 14.0, *) {
             let minutes30 = UIAction(title: "30 minutos") { [weak self] _ in
-                self?.timeSelectButton.setTitle("30 minutos", for: .normal)
-                self?.updateSubtitleText(with: "30 minutos")
+                guard let self = self else { return }
+                self.timeSelectButton.setTitle("30 minutos", for: .normal)
+                self.updateSubtitleText(with: "30 minutos")
+                
+                self.delegate?.settingsView(self, didSelectAntecedenceMinutes: 30)
             }
             
             let hour1 = UIAction(title: "1 hora") { [weak self] _ in
-                self?.timeSelectButton.setTitle("1 hora", for: .normal)
-                self?.updateSubtitleText(with: "1 hora")
+                guard let self = self else { return }
+                self.timeSelectButton.setTitle("1 hora", for: .normal)
+                self.updateSubtitleText(with: "1 hora")
+                
+                self.delegate?.settingsView(self, didSelectAntecedenceMinutes: 60)
             }
             
             timeSelectButton.menu = UIMenu(children: [minutes30, hour1])
@@ -247,6 +261,12 @@ final class SettingsView: UIView {
     }
     @objc private func switchChanged(_ sender: UISwitch) {
         updateNotificationState(isEnable: sender.isOn)
+        
+        delegate?.settingsView(self, didChangeNotificationSwitch: sender.isOn)
+    }
+    func setNotificationSwitch(isOn: Bool) {
+        notificationsSwitch.setOn(isOn, animated: true)
+        updateNotificationState(isEnable: isOn)
     }
 }
 
