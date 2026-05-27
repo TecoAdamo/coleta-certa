@@ -73,7 +73,7 @@ final class OnboardingView: UIView {
             imgOnboarding.widthAnchor.constraint(equalToConstant: 300),
             imgOnboarding.heightAnchor.constraint(equalToConstant: 300),
             
-            primaryButton.topAnchor.constraint(equalTo: imgOnboarding.bottomAnchor, constant: 50),
+            primaryButton.topAnchor.constraint(equalTo: imgOnboarding.bottomAnchor, constant: 80),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             primaryButton.widthAnchor.constraint(equalToConstant: 300),
             primaryButton.heightAnchor.constraint(equalToConstant: 50),

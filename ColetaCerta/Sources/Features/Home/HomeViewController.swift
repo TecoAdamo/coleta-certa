@@ -51,6 +51,17 @@ final class HomeViewController: UIViewController {
     
     private func setupTableItems() {
         guard let season = scheduleData?.baixaTemporada else { return }
+        
+        let organicDays = season.organica.dias
+        
+        let cardText = DateHelper.getNextCollection(from: organicDays)
+        
+        if cardText == "Hoje" || cardText == "Amanhã" {
+            homeView.textLabel.text = "\(cardText), às \(season.organica.inicio)"
+        } else {
+            homeView.textLabel.text = "\(cardText), às \(season.organica.inicio)"
+        }
+        
         var items: [HomeItem] = []
         
         for dia in season.organica.dias {
@@ -86,9 +97,8 @@ final class HomeViewController: UIViewController {
         if let matchedSchedule = allSchedules.first(where: {$0.bairro.lowercased() == suburbSearch?.lowercased()}) {
             self.scheduleData = matchedSchedule
         } else {
-            print("Aviso: O bairro '\(suburbSearch)' não foi encontrado no arquivo JSON.")
+            print("Aviso: O bairro '\(String(describing: suburbSearch))' não foi encontrado no arquivo JSON.")
         }
-            
     }
 }
 

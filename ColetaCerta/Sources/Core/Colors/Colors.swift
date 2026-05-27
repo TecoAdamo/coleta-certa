@@ -19,6 +19,7 @@ enum Colors {
     
     static let backgroundCard = UIColor(hex: "#F8F8F8")
     static let backgroundCardSecondary = UIColor(hex: "#EEF7F0")
+    static let backgroundCardMessages = UIColor(hex: "#D0EFD1")
     
     // MARK: - Brand
     

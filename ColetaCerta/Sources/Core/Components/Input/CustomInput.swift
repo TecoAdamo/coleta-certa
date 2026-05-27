@@ -41,6 +41,7 @@ final class CustomInput: UIView {
         textField.placeholder = placeholder
         
         setupView()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -89,5 +90,48 @@ final class CustomInput: UIView {
             
             textField.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    private func setupActions(){
+        textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    @objc
+    private func textDidChange(){
+        switch inputType {
+        case .normal:
+            break
+        case .cep:
+            maskCEP()
+        case .numeric:
+            break
+        case .uf:
+            break
+        }
+    }
+    
+    private func maskCEP() {
+            guard let text = textField.text else { return }
+            
+            let cleanCEP = text.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+            
+            let mask = "#####-###"
+            
+            textField.text = applyMask(mask: mask, to: cleanCEP)
+        }
+    
+    private func applyMask(mask: String, to value: String) -> String {
+        var result = ""
+        var index = value.startIndex
+        
+        for ch in mask where index < value.endIndex {
+            if ch == "#" {
+                result.append(value[index])
+                index = value.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
     }
 }

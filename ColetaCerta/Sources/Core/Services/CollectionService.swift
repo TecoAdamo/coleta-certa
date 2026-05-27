@@ -17,6 +17,7 @@ final class CollectionService {
         do {
             let data = try Data(contentsOf: url)
             
+            _ = JSONDecoder()
             let schedules = try JSONDecoder().decode([CollectionSchedule].self, from: data)
             
             return schedules

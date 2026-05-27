@@ -29,5 +29,162 @@
         "fim": "14:20"
       }
     }
+  },
+  {
+    "bairro": "Água Branca",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["SEG", "QUA", "SEX"],
+        "inicio": "22:30",
+        "fim": "06:07"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["TER", "QUI", "SAB"],
+        "inicio": "22:30",
+        "fim": "06:03"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      }
+    }
+  },
+  {
+    "bairro": "Centro",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    }
+  },
+
+  {
+    "bairro": "Centro Histórico",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["QUI"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    }
+  },
+
+  {
+    "bairro": "Iperoba",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["TER", "QUI", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["SEX"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      },
+
+      "seletiva": {
+        "dias": ["SEX"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    }
+  },
+  {
+    "bairro": "Paulas",
+
+    "baixaTemporada": {
+      "organica": {
+        "dias": ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      },
+
+      "seletiva": {
+        "dias": ["TER"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    },
+
+    "altaTemporada": {
+      "organica": {
+        "dias": ["TER", "QUI", "SAB"],
+        "inicio": "06:00",
+        "fim": "14:20"
+      },
+
+      "seletiva": {
+        "dias": ["TER"],
+        "inicio": "14:20",
+        "fim": "22:35"
+      }
+    }
   }
 ]

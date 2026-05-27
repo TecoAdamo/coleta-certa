@@ -11,6 +11,8 @@ import UIKit
 final class AddressViewController: UIViewController {
     private let addressView = AddressView()
     
+    private var selectedNeighborhood: String?
+    
     override func loadView() {
         view = addressView
     }
@@ -23,6 +25,7 @@ final class AddressViewController: UIViewController {
         
         setupUI()
         setupActions()
+        setupNeighborhood()
     }
     
     private func setupUI(){
@@ -33,48 +36,46 @@ final class AddressViewController: UIViewController {
         addressView.buttonConfirmAddress.addTarget(self, action: #selector(handleContinue), for: .touchUpInside)
     }
     
+    private func setupNeighborhood(){
+        let service = CollectionService()
+        let allSchedules = service.loadSchedule()
+        
+        let menuActions = allSchedules.map{ schedule in
+            return UIAction(title: schedule.bairro, image: nil) {[weak self ] action in
+                guard let self = self else { return }
+                
+                self.selectedNeighborhood = schedule.bairro
+                
+                self.addressView.neighborhoodSelectButton.setTitle(schedule.bairro, for: .normal)
+            }
+        }
+        let neighborhoodMenu = UIMenu(title: "Bairros disponíveis:", children: menuActions)
+        addressView.neighborhoodSelectButton.menu = neighborhoodMenu
+    }
+    
     @objc
     private func handleContinue(){
-        
-        let cep = addressView.cepInput.textField.text ?? ""
-        let streetInput = addressView.streetInput.textField.text ?? ""
-        let numberInput = addressView.numericInput.textField.text ?? ""
-        let neighborhoodInput = addressView.neighborhoodInput.textField.text ?? ""
-        let cityInput = addressView.cityInput.textField.text ?? ""
-        let ufInput = addressView.ufInput.textField.text ?? ""
-        
-        if cep.isEmpty || streetInput.isEmpty || numberInput.isEmpty || neighborhoodInput.isEmpty || cityInput.isEmpty || ufInput.isEmpty {
-            let alert = UIAlertController(title: "Erro", message: "Preencha todos os campos", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        } else {
-            let service = CollectionService()
-            let allSchedules = service.loadSchedule()
             
-            let neighborhoodExists = allSchedules.contains { $0.bairro.lowercased() == neighborhoodInput.lowercased() }
-            
-            if !neighborhoodExists {
-                let alert = UIAlertController(title: "Erro", message: "Bairro não encontrado", preferredStyle: .alert)
+            guard let neighborhoodInput = selectedNeighborhood, !neighborhoodInput.isEmpty else {
+                let alert = UIAlertController(
+                    title: "Atenção",
+                    message: "Por favor, selecione um bairro na lista para continuar.",
+                    preferredStyle: .alert
+                )
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
                 return
             }
             
-            let nextViewController = HomeViewController()
-            
-            nextViewController.selectedSuburb = neighborhoodInput
-            
-            addressView.cepInput.textField.text = ""
-            addressView.streetInput.textField.text = ""
-            addressView.numericInput.textField.text = ""
-            addressView.neighborhoodInput.textField.text = ""
-            addressView.cityInput.textField.text = ""
-            addressView.ufInput.textField.text = ""
-            
-            navigationController?.pushViewController(
-                nextViewController,
-                animated: true
-            )
+        let tabBarController = MainTabBarController()
+
+        if let homeNavigation = tabBarController.viewControllers?.first as? UINavigationController,
+           let homeViewController = homeNavigation.viewControllers.first as? HomeViewController {
+
+            homeViewController.selectedSuburb = neighborhoodInput
         }
+
+        AppRouter.setRootViewController(tabBarController)
     }
 }
+

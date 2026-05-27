@@ -30,47 +30,35 @@ final class AddressView: UIView {
         return label
     }()
     
-    let cepInput = CustomInput(
-        title: "CEP", placeholder: "ex: 00000-000",
-        type: .cep,
-        style: .secondary
-    )
-    
-    let streetInput = CustomInput(
-        title: "Rua", placeholder: "ex: Rua Olaria",
-        type: .normal,
-        style: .secondary
-    )
-    
-    let numericInput = CustomInput(
-        title: "Número", placeholder: "Nº",
-        type: .numeric,
-        style: .secondary
-    )
-    
-    let complementInput = CustomInput(
-        title: "Complemento(opcional)", placeholder: "Complemento",
-        type: .normal,
-        style: .secondary
-    )
-    
-    let neighborhoodInput = CustomInput(
-        title: "Bairro", placeholder: "ex: Água Branca",
-        type: .normal,
-        style: .secondary
-    )
-    
-    let cityInput = CustomInput(
-        title: "Cidade", placeholder: "Cidade",
-        type: .normal,
-        style: .secondary
-    )
-    
-    let ufInput = CustomInput(
-        title: "UF", placeholder: "UF",
-        type: .uf,
-        style: .secondary
-    )
+    private let selectTitleLabel: UILabel = {
+            let label = UILabel()
+            label.text = "Selecione seu Bairro:"
+            label.font = .systemFont(ofSize: 14, weight: .medium)
+            label.textColor = .gray
+            label.translatesAutoresizingMaskIntoConstraints = false
+            return label
+        }()
+        
+        let neighborhoodSelectButton: UIButton = {
+            var config = UIButton.Configuration.plain()
+            config.title = "Selecione seu Bairro..."
+            config.image = UIImage(systemName: "chevron.down")
+            config.imagePlacement = .trailing
+            config.imagePadding = 12
+            config.cornerStyle = .medium
+            config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+            
+            let button = UIButton(configuration: config)
+            button.contentHorizontalAlignment = .leading
+            button.backgroundColor = .clear
+            button.tintColor = .black
+            button.layer.cornerRadius = 8
+            button.layer.borderWidth = 1
+            button.layer.borderColor = Colors.borderPrimary.cgColor
+            button.showsMenuAsPrimaryAction = true
+            button.translatesAutoresizingMaskIntoConstraints = false
+            return button
+        }()
     
     let buttonConfirmAddress = CustomButton(title: "Confirmar endereço", style: .primary, size: .medium)
     
@@ -116,17 +104,10 @@ final class AddressView: UIView {
         
         addSubview(stackView)
         
-        numberComplementStack.addArrangedSubview(numericInput)
-        numberComplementStack.addArrangedSubview(complementInput)
+        stackView.addArrangedSubview(selectTitleLabel)
+        stackView.addArrangedSubview(neighborhoodSelectButton)
+        stackView.setCustomSpacing(24, after: neighborhoodSelectButton)
         
-        cityUfStack.addArrangedSubview(cityInput)
-        cityUfStack.addArrangedSubview(ufInput)
-        
-        stackView.addArrangedSubview(cepInput)
-        stackView.addArrangedSubview(streetInput)
-        stackView.addArrangedSubview(numberComplementStack)
-        stackView.addArrangedSubview(neighborhoodInput)
-        stackView.addArrangedSubview(cityUfStack)
         
         addSubview(buttonConfirmAddress)
         
@@ -155,11 +136,9 @@ final class AddressView: UIView {
                 constant: -24
             ),
             
-            numericInput.widthAnchor.constraint(equalToConstant: 90),
+            neighborhoodSelectButton.heightAnchor.constraint(equalToConstant: 52),
             
-            ufInput.widthAnchor.constraint(equalToConstant: 100),
-            
-            buttonConfirmAddress.topAnchor.constraint(equalTo: ufInput.bottomAnchor, constant: 80),
+            buttonConfirmAddress.topAnchor.constraint(equalTo: neighborhoodSelectButton.bottomAnchor, constant: 80),
             buttonConfirmAddress.centerXAnchor.constraint(equalTo: centerXAnchor),
             buttonConfirmAddress.leadingAnchor.constraint(
                 equalTo: leadingAnchor,

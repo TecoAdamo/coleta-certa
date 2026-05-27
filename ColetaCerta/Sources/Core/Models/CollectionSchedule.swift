@@ -21,3 +21,21 @@ struct GarbageSchedule: Codable {
     let inicio: String
     let fim: String
 }
+enum GarbageType: CaseIterable {
+    case organica
+    case seletiva
+    
+    var title: String {
+        switch self {
+        case .organica: return "Orgânica"
+        case .seletiva: return "Reciclável"
+        }
+    }
+    
+    var iconName: String {
+        switch self {
+        case .organica: return "leaf"
+        case .seletiva: return "trash"
+        }
+    }
+}
