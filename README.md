@@ -4,7 +4,8 @@ An iOS application developed with UIKit + ViewCode to help users check trash col
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 48" src="https://github.com/user-attachments/assets/3e7c1b36-d5bc-4500-bb5b-d564919b8564" />
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 41" src="https://github.com/user-attachments/assets/58646eff-2382-42be-ae3c-c2346d99d7ff" />
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 21" src="https://github.com/user-attachments/assets/af5b220f-dfb6-4e95-9d57-a16b9ea14578" />
-<img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-17 at 01 35 51" src="https://github.com/user-attachments/assets/264c9944-4de5-45b4-a1ce-0eb9511ce417" />
+<img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-05-28 at 19 21 46" src="https://github.com/user-attachments/assets/029e44a9-cde1-468e-8a63-7734de509f89" />
+<img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-05-28 at 19 22 24" src="https://github.com/user-attachments/assets/715cf17f-1baf-4c8a-9ad9-46be4ee4a567" />
 
 # 📱 About the Project
 ColetaCerta was created to simplify access to recycling and organic waste collection schedules across different neighborhoods and regions.
