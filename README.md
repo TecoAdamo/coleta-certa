@@ -6,6 +6,10 @@ An iOS application developed with UIKit + ViewCode to help users check trash col
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 21" src="https://github.com/user-attachments/assets/af5b220f-dfb6-4e95-9d57-a16b9ea14578" />
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-17 at 01 35 51" src="https://github.com/user-attachments/assets/264c9944-4de5-45b4-a1ce-0eb9511ce417" />
 
+
+
+
+
 # 📱 About the Project
 ColetaCerta was created to simplify access to recycling and organic waste collection schedules across different neighborhoods and regions.
 The app features an onboarding flow to identify the user's location and display the correct collection days and times.
