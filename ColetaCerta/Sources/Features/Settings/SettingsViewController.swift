@@ -26,22 +26,32 @@ final class SettingsViewController: UIViewController {
 extension SettingsViewController: SettingsViewDelegate {
     func settingsView(_ view: SettingsView, didChangeNotificationSwitch isOn: Bool) {
         if isOn {
-            NotificationManager.shared.requestPermission { [ weak self] granted in
-                if granted {
-                    print("Permissão concedida! Agendando...")
-                    NotificationManager.shared.scheduleCollectionNotification(
-                        title: "Coleta Orgânica Chegando!",
-                        body: "Coloque o lixo para fora em breve.",
-                        minutesBefore: 30
-                    )
-                } else {
-                    print("Usuário recusou.")
-                    self?.settingsView.setNotificationSwitch(isOn: false)
+            NotificationManager.shared.requestPermission { [weak self] granted in
+                DispatchQueue.main.async {
+                    if granted {
+                        print("Permissão concedida! Agendando...")
+                        
+                        NotificationManager.shared.scheduleCollectionNotification(
+                            weekday: 2,
+                            
+                            hour: 14,
+                            minute: 20,
+                            antecedenceMinutes: 30,
+                            title: "Coleta Orgânica Chegando!",
+                            body: "Coloque o lixo para fora em breve."
+                        )
+                    } else {
+                        print("Usuário recusou.")
+                        self?.settingsView.setNotificationSwitch(isOn: false)
+                    }
                 }
             }
         } else {
             print("Desligando notificações...")
-                        NotificationManager.shared.cancelAllNotifications()
+            NotificationManager.shared.cancelAllNotifications()
         }
+    }
+    func settingsView(_ view: SettingsView, didSelectAntecedenceMinutes minutes: Int) {
+        print("Usuário mudou a antecedência para \(minutes) minutos")
     }
 }

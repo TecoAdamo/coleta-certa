@@ -10,6 +10,15 @@ import UIKit
 
 final class HomeView: UIView {
     
+    let welcomeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.text = "Olá!"
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let container: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.accentBrandDark
@@ -118,6 +127,7 @@ final class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     private func setupView(){
+        addSubview(welcomeLabel)
         
         addSubview(container)
         
@@ -156,18 +166,13 @@ final class HomeView: UIView {
         
         NSLayoutConstraint.activate([
 
-            container.topAnchor.constraint(
-                equalTo: safeAreaLayoutGuide.topAnchor,
-                constant: 22
-            ),
-            container.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 24
-            ),
-            container.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -24
-            ),
+            welcomeLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+                    
+            container.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 16),
+            container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             container.heightAnchor.constraint(equalToConstant: 140),
             
             textPrimaryLabel.topAnchor.constraint(
@@ -205,15 +210,9 @@ final class HomeView: UIView {
                 constant: 6
             ),
             
-            calendarLabel.topAnchor.constraint(equalTo: organicLabel.bottomAnchor, constant: 36),
-            calendarLabel.leadingAnchor.constraint(
-                equalTo: leadingAnchor,
-                constant: 24
-            ),
-            calendarLabel.trailingAnchor.constraint(
-                equalTo: trailingAnchor,
-                constant: -24
-            ),
+            calendarLabel.topAnchor.constraint(equalTo:container.bottomAnchor, constant: 24),
+            calendarLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            calendarLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
             tableView.topAnchor.constraint(
                 equalTo: container.bottomAnchor,
@@ -250,7 +249,13 @@ final class HomeView: UIView {
             subLabelContainerMessage.topAnchor.constraint(equalTo: containerMessage.topAnchor, constant: 44),
             subLabelContainerMessage.leadingAnchor.constraint(equalTo: lightIcon.leadingAnchor, constant: 70),
         ])
-        
+    }
+    func configureWelcomeMessage(with name: String) {
+        if name.isEmpty {
+            print("Informe seu nome")
+        } else {
+            welcomeLabel.text = "Olá, \(name)!"
+        }
     }
 }
 

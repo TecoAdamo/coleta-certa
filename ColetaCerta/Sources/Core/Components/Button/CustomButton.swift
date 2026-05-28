@@ -10,6 +10,8 @@ import UIKit
 
 final class CustomButton: UIButton {
     
+    private var action: (() -> Void)?
+    
     init(title: String, style: ButtonStyle, size: ButtonSize) {
         super.init(frame: .zero)
         
@@ -26,6 +28,17 @@ final class CustomButton: UIButton {
         layer.cornerRadius = 12
         
         translatesAutoresizingMaskIntoConstraints = false
+        
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    func setAction(_ action: @escaping () -> Void){
+        self.action = action
+    }
+    
+    @objc
+    private func buttonTapped(){
+        action?()
     }
     
     required init?(coder: NSCoder) {

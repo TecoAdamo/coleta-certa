@@ -15,7 +15,7 @@ final class NotificationManager {
         let center = UNUserNotificationCenter.current()
         
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            DispatchQueue.main.async {guard let notificationDate = calendar.date(byAdding: .minute, value: -antecedenceMinutes, to: collectionDate) else { return }
+            DispatchQueue.main.async {
                 completion(granted)
             }
         }

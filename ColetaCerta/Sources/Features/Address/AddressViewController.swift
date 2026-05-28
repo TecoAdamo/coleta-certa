@@ -11,10 +11,21 @@ import UIKit
 final class AddressViewController: UIViewController {
     private let addressView = AddressView()
     
+    private let addressViewModel: AddressViewModel
+    
     private var selectedNeighborhood: String?
     
     override func loadView() {
         view = addressView
+    }
+    
+    init(addressViewModel: AddressViewModel) {
+        self.addressViewModel = addressViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -66,6 +77,23 @@ final class AddressViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
                 return
             }
+        
+        let nickName = addressView.userNickName
+        if nickName.isEmpty {
+            let alert = UIAlertController(
+                title: "Atenção",
+                message: "Informe seu nome para prosseguir.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        UserDefaults.standard.set(nickName, forKey: "userName")
+        UserDefaults.standard.synchronize()
+        
+        addressViewModel.itsOkay(userNick: nickName)
             
         let tabBarController = MainTabBarController()
 

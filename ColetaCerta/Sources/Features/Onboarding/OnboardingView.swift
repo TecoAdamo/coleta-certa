@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 final class OnboardingView: UIView {
+    
     let label: UILabel = {
         let label = UILabel()
         label.text = "Vamos encontrar os horários da coleta na sua região!"
@@ -35,6 +36,7 @@ final class OnboardingView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
     
     let primaryButton = CustomButton(
         title: "Informar meu endereço",
@@ -44,12 +46,14 @@ final class OnboardingView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+      
         setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     
     private func setupView(){
         backgroundColor = Colors.backgroundTertiary
@@ -73,7 +77,7 @@ final class OnboardingView: UIView {
             imgOnboarding.widthAnchor.constraint(equalToConstant: 300),
             imgOnboarding.heightAnchor.constraint(equalToConstant: 300),
             
-            primaryButton.topAnchor.constraint(equalTo: imgOnboarding.bottomAnchor, constant: 80),
+            primaryButton.topAnchor.constraint(equalTo: imgOnboarding.bottomAnchor, constant: 60),
             primaryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             primaryButton.widthAnchor.constraint(equalToConstant: 300),
             primaryButton.heightAnchor.constraint(equalToConstant: 50),

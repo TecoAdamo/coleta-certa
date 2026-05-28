@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 final class AddressView: UIView {
+    private let addressViewModel = AddressViewModel()
+    
+    public weak var delegate: AddressViewDelegate?
     
     let label: UILabel = {
         let label = UILabel()
@@ -60,6 +63,17 @@ final class AddressView: UIView {
             return button
         }()
     
+    let inputName = CustomInput(
+        title: "Informe seu nome:",
+        placeholder: "ex: Bruna",
+        type: .normal,
+        style: .secondary
+    )
+    
+    var userNickName: String {
+        inputName.textField.text ?? ""
+    }
+    
     let buttonConfirmAddress = CustomButton(title: "Confirmar endereço", style: .primary, size: .medium)
     
     private let stackView: UIStackView = {
@@ -89,10 +103,19 @@ final class AddressView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func setupActions(){
+        buttonConfirmAddress.setAction { [weak self] in
+            self?.delegate?.didTapStart()
+        }
     }
     
     private func setupView() {
@@ -108,7 +131,7 @@ final class AddressView: UIView {
         stackView.addArrangedSubview(neighborhoodSelectButton)
         stackView.setCustomSpacing(24, after: neighborhoodSelectButton)
         
-        
+        addSubview(inputName)
         addSubview(buttonConfirmAddress)
         
         NSLayoutConstraint.activate([
@@ -138,7 +161,12 @@ final class AddressView: UIView {
             
             neighborhoodSelectButton.heightAnchor.constraint(equalToConstant: 52),
             
-            buttonConfirmAddress.topAnchor.constraint(equalTo: neighborhoodSelectButton.bottomAnchor, constant: 80),
+            
+            inputName.topAnchor.constraint(equalTo: neighborhoodSelectButton.bottomAnchor, constant: 80),
+            inputName.centerXAnchor.constraint(equalTo: centerXAnchor),
+            inputName.widthAnchor.constraint(equalToConstant: 300),
+            
+            buttonConfirmAddress.topAnchor.constraint(equalTo: inputName.bottomAnchor, constant: 80),
             buttonConfirmAddress.centerXAnchor.constraint(equalTo: centerXAnchor),
             buttonConfirmAddress.leadingAnchor.constraint(
                 equalTo: leadingAnchor,

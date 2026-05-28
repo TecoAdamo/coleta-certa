@@ -35,6 +35,10 @@ final class HomeViewController: UIViewController {
         setupUI()
         setupTableView()
         loadMockData()
+        
+        let savedName = UserDefaults.standard.string(forKey: "userName") ?? ""
+        
+        homeView.configureWelcomeMessage(with: savedName)
     }
     
     private func setupUI(){

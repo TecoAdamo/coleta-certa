@@ -10,11 +10,11 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     private let onboardingView = OnboardingView()
-    
+
     override func loadView() {
         view = onboardingView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,8 +35,10 @@ final class OnboardingViewController: UIViewController {
     
     @objc
     private func goToManualAddress(){
-        let vc = AddressViewController()
+        let vc = AddressViewController(addressViewModel: AddressViewModel())
 
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+
 }

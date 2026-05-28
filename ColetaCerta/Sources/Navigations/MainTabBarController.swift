@@ -34,7 +34,7 @@ final class MainTabBarController: UITabBarController {
         )
         
         settingsNavigation.tabBarItem = UITabBarItem(
-            title: "Perfil",
+            title: "Ajustes",
             image: UIImage(systemName: "gearshape"),
             tag: 1
         )
