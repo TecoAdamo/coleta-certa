@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+internal import CoreData
+
 final class SplashViewController: UIViewController {
     private let splashView = SplashView()
     
@@ -18,7 +20,7 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigateToOnboarding()
+        checkUserStatusAndNavigate()
 
         setupUI()
     }
@@ -27,15 +29,23 @@ final class SplashViewController: UIViewController {
         view.backgroundColor = Colors.backgroundPrimary
     }
     
-    private func navigateToOnboarding(){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+    private func checkUserStatusAndNavigate(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [ weak self ] in
+            guard let self = self else { return }
             
-            let onboardingViewController = OnboardingViewController()
+            let persistence = Neighborhood()
             
-            self.navigationController?.pushViewController(
-                onboardingViewController,
-                animated: true
-            )
+            if let user = persistence.fetchUserNeighborhood(),
+                let savedName = user.value(forKey: "userName") as? String,
+                !savedName.isEmpty {
+                    
+                    let tabBarController = MainTabBarController()
+                    AppRouter.setRootViewController(tabBarController)
+                } else {
+                    let onboardingViewController = OnboardingViewController()
+                    self.navigationController?.pushViewController(onboardingViewController, animated: true)
+                }
+            }
         }
     }
-}
+

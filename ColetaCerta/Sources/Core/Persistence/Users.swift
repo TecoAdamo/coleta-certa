@@ -5,7 +5,7 @@
 //  Created by Mateus on 28/05/26.
 //
 
-import CoreData
+internal import CoreData
 
 class User {
     private let context = CoreDataStack.shared.context

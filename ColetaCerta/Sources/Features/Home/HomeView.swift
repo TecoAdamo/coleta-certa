@@ -19,21 +19,21 @@ final class HomeView: UIView {
         return label
     }()
     
+    let welcomeSubLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Aqui esta sua próxima coleta."
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let container: UIView = {
         let view = UIView()
         view.backgroundColor = Colors.accentBrandDark
         view.layer.cornerRadius = 8
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
-    }()
-    
-    let textPrimaryLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Próxima coleta"
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
     }()
     
     let textLabel: UILabel = {
@@ -128,10 +128,10 @@ final class HomeView: UIView {
     }
     private func setupView(){
         addSubview(welcomeLabel)
+        addSubview(welcomeSubLabel)
         
         addSubview(container)
         
-        container.addSubview(textPrimaryLabel)
         container.addSubview(textLabel)
         
         container.addSubview(organicIcon)
@@ -169,21 +169,25 @@ final class HomeView: UIView {
             welcomeLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             welcomeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             welcomeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            
+            welcomeSubLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 16),
+            welcomeSubLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            welcomeSubLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
                     
-            container.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 16),
+            container.topAnchor.constraint(equalTo: welcomeSubLabel.bottomAnchor, constant: 16),
             container.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             container.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            container.heightAnchor.constraint(equalToConstant: 140),
+            container.heightAnchor.constraint(equalToConstant: 110),
             
-            textPrimaryLabel.topAnchor.constraint(
+            textLabel.topAnchor.constraint(
                 equalTo: container.topAnchor,
                 constant: 20
-            ),            textPrimaryLabel.leadingAnchor.constraint(
+            ),            container.leadingAnchor.constraint(
                 equalTo: container.leadingAnchor,
                 constant: 20
             ),
             textLabel.topAnchor.constraint(
-                equalTo: textPrimaryLabel.bottomAnchor,
+                equalTo: container.bottomAnchor,
                 constant: 8
             ),
             textLabel.leadingAnchor.constraint(

@@ -26,7 +26,7 @@ enum InputStyle {
             return 0
             
         case .secondary:
-            return 0.8
+            return 0.7
         }
     }
     

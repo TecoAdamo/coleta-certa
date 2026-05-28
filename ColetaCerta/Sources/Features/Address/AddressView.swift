@@ -54,7 +54,7 @@ final class AddressView: UIView {
             let button = UIButton(configuration: config)
             button.contentHorizontalAlignment = .leading
             button.backgroundColor = .clear
-            button.tintColor = .black
+            button.tintColor = .gray
             button.layer.cornerRadius = 8
             button.layer.borderWidth = 1
             button.layer.borderColor = Colors.borderPrimary.cgColor
@@ -161,10 +161,10 @@ final class AddressView: UIView {
             
             neighborhoodSelectButton.heightAnchor.constraint(equalToConstant: 52),
             
-            
             inputName.topAnchor.constraint(equalTo: neighborhoodSelectButton.bottomAnchor, constant: 80),
             inputName.centerXAnchor.constraint(equalTo: centerXAnchor),
-            inputName.widthAnchor.constraint(equalToConstant: 300),
+            inputName.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 24),
+            inputName.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -24),
             
             buttonConfirmAddress.topAnchor.constraint(equalTo: inputName.bottomAnchor, constant: 80),
             buttonConfirmAddress.centerXAnchor.constraint(equalTo: centerXAnchor),

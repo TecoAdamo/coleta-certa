@@ -90,8 +90,8 @@ final class AddressViewController: UIViewController {
             return
         }
         
-        UserDefaults.standard.set(nickName, forKey: "userName")
-        UserDefaults.standard.synchronize()
+        let persistence = Neighborhood()
+        persistence.saveUserNeighborhood(name: nickName, neighborhoodName: neighborhoodInput)
         
         addressViewModel.itsOkay(userNick: nickName)
             

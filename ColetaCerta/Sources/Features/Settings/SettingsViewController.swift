@@ -20,9 +20,16 @@ final class SettingsViewController: UIViewController {
         
         view.backgroundColor = Colors.backgroundCardWhite
         settingsView.delegate = self
+        
+        setupInitialSwitchState()
+    }
+    
+    private func setupInitialSwitchState() {
+        let isNotificationEnabled = UserDefaults.standard.bool(forKey: "isNotificationEnabled")
+        
+        settingsView.setNotificationSwitch(isOn: isNotificationEnabled)
     }
 }
-
 extension SettingsViewController: SettingsViewDelegate {
     func settingsView(_ view: SettingsView, didChangeNotificationSwitch isOn: Bool) {
         if isOn {
@@ -30,6 +37,8 @@ extension SettingsViewController: SettingsViewDelegate {
                 DispatchQueue.main.async {
                     if granted {
                         print("Permissão concedida! Agendando...")
+                        
+                        UserDefaults.standard.set(true, forKey: "isNotificationEnabled")
                         
                         NotificationManager.shared.scheduleCollectionNotification(
                             weekday: 2,
@@ -42,16 +51,20 @@ extension SettingsViewController: SettingsViewDelegate {
                         )
                     } else {
                         print("Usuário recusou.")
+                        UserDefaults.standard.set(false, forKey: "isNotificationEnabled")
                         self?.settingsView.setNotificationSwitch(isOn: false)
                     }
                 }
             }
         } else {
             print("Desligando notificações...")
+            UserDefaults.standard.set(false, forKey: "isNotificationEnabled")
             NotificationManager.shared.cancelAllNotifications()
         }
     }
     func settingsView(_ view: SettingsView, didSelectAntecedenceMinutes minutes: Int) {
         print("Usuário mudou a antecedência para \(minutes) minutos")
+        
+        UserDefaults.standard.set(minutes, forKey: "notificationAntecedenceMinutes")
     }
 }

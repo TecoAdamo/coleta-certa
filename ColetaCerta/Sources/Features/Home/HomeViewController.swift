@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+internal import CoreData
 
 final class HomeViewController: UIViewController {
     
@@ -34,11 +35,18 @@ final class HomeViewController: UIViewController {
         
         setupUI()
         setupTableView()
+        
+        let persistence = Neighborhood()
+        if let user = persistence.fetchUserNeighborhood() {
+            let savedName = user.value(forKey: "userName") as? String ?? ""
+            homeView.configureWelcomeMessage(with: savedName)
+            
+            if selectedSuburb == nil {
+                selectedSuburb = user.value(forKey: "userNeighborhood") as? String
+            }
+        }
+        
         loadMockData()
-        
-        let savedName = UserDefaults.standard.string(forKey: "userName") ?? ""
-        
-        homeView.configureWelcomeMessage(with: savedName)
     }
     
     private func setupUI(){

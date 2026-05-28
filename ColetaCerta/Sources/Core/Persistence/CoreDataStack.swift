@@ -6,7 +6,7 @@
 //
 //
 
-import CoreData
+internal import CoreData
 
 class CoreDataStack {
     static let shared = CoreDataStack()
