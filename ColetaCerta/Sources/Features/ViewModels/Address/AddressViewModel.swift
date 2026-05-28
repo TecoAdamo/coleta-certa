@@ -7,7 +7,7 @@
 
 import Foundation
 
-class OnboardingViewModel {
+class AddressViewModel {
     var succesResult: (() -> Void)?
     var showToast: ((String) -> Void)?
     
