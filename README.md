@@ -6,7 +6,7 @@ An iOS application developed with UIKit + ViewCode to help users check trash col
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-15 at 23 46 21" src="https://github.com/user-attachments/assets/af5b220f-dfb6-4e95-9d57-a16b9ea14578" />
 <img width="220" height="500" alt="Simulator Screenshot - iPhone 17 Pro - 2026-05-17 at 01 35 51" src="https://github.com/user-attachments/assets/264c9944-4de5-45b4-a1ce-0eb9511ce417" />
 
-
+/Users/mateus/Desktop/Gravação de Tela 2026-05-28 às 19.10.31.mov
 
 
 
